@@ -177,12 +177,13 @@ const FinalCTASection = () => {
                     {/* Stats/Features Grid */}
                     <motion.div
                         variants={itemVariants}
-                        className="grid grid-cols-1 gap-6 mb-12 sm:grid-cols-2 lg:grid-cols-3"
+                        className="grid grid-cols-1 gap-6 mb-12 sm:grid-cols-2 lg:grid-cols-4"
                     >
                         {[
-                            { number: "3", label: "Competition Rounds", icon: "🎯" },
-                            { number: "₹400", label: "Maximum Team Fee", icon: "💰" },
-                            { number: "5", label: "Cash Prize Winners", icon: "🏆" }
+                            { number: "₹15,000", label: "Prize Pool", icon: "💰" },
+                            { number: "50+", label: "Teams to Triumph", icon: "🚀" },
+                            { number: "5", label: "Cash Prizes", icon: "🏆" },
+                            { number: "2", label: "Value-Driven Workshops", icon: "🎓" }
                         ].map((stat, index) => (
                             <motion.div
                                 key={index}
@@ -200,6 +201,31 @@ const FinalCTASection = () => {
                                 </GlassCard>
                             </motion.div>
                         ))}
+                    </motion.div>
+
+                    {/* Workshop Details */}
+                    <motion.div
+                        variants={itemVariants}
+                        className="mb-12"
+                    >
+                        <GlassCard className="p-8 bg-gradient-to-r from-glass-bg to-electric-blue/5 border-electric-blue/20">
+                            <div className="flex items-center justify-center mb-4">
+                                <div className="p-2 rounded-lg bg-electric-blue/20">
+                                    <span className="text-2xl">🎓</span>
+                                </div>
+                                <h3 className="ml-3 text-xl font-ui-semibold text-white">Value-Driven Workshops</h3>
+                            </div>
+                            <div className="grid gap-4 md:grid-cols-2">
+                                <div className="p-4 rounded-lg bg-glass-bg/50">
+                                    <h4 className="mb-2 font-ui-semibold text-core-orange">Technical Workshop</h4>
+                                    <p className="text-sm text-gray-300">Product Building & Development</p>
+                                </div>
+                                <div className="p-4 rounded-lg bg-glass-bg/50">
+                                    <h4 className="mb-2 font-ui-semibold text-electric-blue">Marketing Workshop</h4>
+                                    <p className="text-sm text-gray-300">Scaling & Growth Strategies</p>
+                                </div>
+                            </div>
+                        </GlassCard>
                     </motion.div>
 
                     {/* Final Message */}

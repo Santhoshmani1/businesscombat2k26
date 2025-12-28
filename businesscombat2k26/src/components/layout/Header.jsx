@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Info, Target, DollarSign, Users, Zap } from 'lucide-react';
+import { Menu, X, Info, Target, DollarSign, Users, Zap, ArrowUp, CircleArrowOutUpLeft, CircleArrowOutUpRightIcon } from 'lucide-react';
 import { CTAButton } from '../ui';
 import { useScrollNavigation } from '../../hooks/useScrollNavigation';
+import businessCombatLogo from '../../assets/icon.png';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -41,6 +42,14 @@ const Header = () => {
         // Open registration form
         const url = 'https://forms.gle/6sWcLoYBgmKHCPhe8';
         window.open(url, '_blank');
+    };
+
+    // Handle scroll to top
+    const handleLogoClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     };
 
     // Header animation variants
@@ -86,18 +95,20 @@ const Header = () => {
                     <div className="flex items-center justify-between h-16 lg:h-20">
                         {/* Logo/Brand */}
                         <div className="flex-shrink-0">
-                            <div className="flex items-center gap-3">
-                                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-core-orange/20 to-electric-blue/20 border border-glass-border">
-                                    <Zap className="w-6 h-6 text-core-orange" />
-                                </div>
-                                <h1 className="hero-text text-xl lg:text-2xl text-core-orange">
-                                    BUSINESS COMBAT
-                                </h1>
-                            </div>
+                            <button
+                                onClick={handleLogoClick}
+                                className="flex items-center gap-3 transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-core-orange focus:ring-opacity-50 rounded-lg p-1"
+                            >
+                                <img
+                                    src={businessCombatLogo}
+                                    alt="Business Combat Logo"
+                                    className="h-10 w-auto lg:h-12"
+                                />
+                            </button>
                         </div>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
+                        <nav className="items-center hidden space-x-6 md:flex lg:space-x-8">
                             {navItems.map((item) => {
                                 const IconComponent = item.icon;
                                 return (
@@ -186,6 +197,7 @@ const Header = () => {
                                         size="large"
                                         onClick={handleRegisterClick}
                                         className="w-full"
+                                        showArrow={false}
                                     >
                                         REGISTER
                                     </CTAButton>

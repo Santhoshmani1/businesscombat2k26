@@ -96,7 +96,7 @@ const RoundsSection = () => {
                     animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                     transition={{ delay: index * 0.2, duration: 0.6 }}
                 >
-                    <GlassCard className="w-80 sm:w-96 h-[500px] p-8 hover-lift group">
+                    <GlassCard className="w-80 sm:w-96 md:w-80 lg:w-96 h-[500px] p-8 hover-lift group mx-auto md:mx-0">
                         {/* Round Number */}
                         <div className="flex items-center justify-between mb-6">
                             <div className={`text-6xl font-bold bg-gradient-to-r ${round.color} bg-clip-text text-transparent`}>
@@ -187,14 +187,34 @@ const RoundsSection = () => {
                     </p>
                 </motion.div>
 
-                {/* Horizontal Scroll Cards */}
+                {/* Horizontal Scroll Cards - Desktop / Vertical Stack - Mobile */}
                 <div className="relative">
-                    <HorizontalScrollCards
-                        cards={roundCards}
-                        scrollTrigger={false} // Use manual scroll for better control
-                        className="mb-8"
-                        cardClassName="flex-shrink-0"
-                    />
+                    {/* Desktop: Horizontal Scroll */}
+                    <div className="hidden md:block">
+                        <HorizontalScrollCards
+                            cards={roundCards}
+                            scrollTrigger={false} // Use manual scroll for better control
+                            className="mb-8"
+                            cardClassName="flex-shrink-0"
+                        />
+                    </div>
+
+                    {/* Mobile: Vertical Stack */}
+                    <div className="block md:hidden">
+                        <div className="space-y-6">
+                            {roundCards.map((card, index) => (
+                                <motion.div
+                                    key={card.id}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                                    transition={{ delay: index * 0.2, duration: 0.6 }}
+                                    className="w-full"
+                                >
+                                    {card.content}
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
 
                 {/* Additional Info */}

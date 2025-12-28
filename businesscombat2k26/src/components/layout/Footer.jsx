@@ -21,6 +21,12 @@ const Footer = () => {
             href: 'tel:+919059568044'
         },
         {
+            icon: Mail,
+            label: 'Email',
+            value: 'businesscombatvsp@gmail.com',
+            href: 'mailto:businesscombatvsp@gmail.com'
+        },
+        {
             icon: MapPin,
             label: 'Location',
             value: 'Department of ECE, College Campus',

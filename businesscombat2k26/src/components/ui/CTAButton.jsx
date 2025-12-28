@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { forwardRef } from 'react';
+import { ArrowRight, ArrowRightCircle, ArrowUp, ArrowUpCircle, CircleArrowOutUpRight } from 'lucide-react';
 
 const CTAButton = forwardRef(({
     variant = 'primary',
@@ -9,6 +10,7 @@ const CTAButton = forwardRef(({
     disabled = false,
     loading = false,
     className = '',
+    showArrow = true,
     ...props
 }, ref) => {
     // Size configurations with touch-friendly targets
@@ -26,7 +28,7 @@ const CTAButton = forwardRef(({
       border-core-orange
       font-ui-semibold
       btn-glow
-      shadow-neon-orange
+      shadow-neon-blue
       hover:shadow-hover-glow
     `,
         secondary: `
@@ -63,6 +65,7 @@ const CTAButton = forwardRef(({
     focus:ring-core-orange
     focus:ring-opacity-50
     touch-target
+    group
     ${sizeClasses[size]}
     ${variantClasses[variant]}
     ${disabled || loading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
@@ -112,7 +115,7 @@ const CTAButton = forwardRef(({
         >
             {/* Glow effect overlay for primary buttons */}
             {variant === 'primary' && !disabled && !loading && (
-                <div className="absolute inset-0 transition-opacity duration-200 rounded-lg opacity-80 bg-gradient-to-r from-transparent via-white/15 to-transparent hover:opacity-100" />
+                <div className="absolute inset-0 transition-opacity duration-200 rounded-lg opacity-60 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent hover:opacity-100" />
             )}
 
             {loading && (
@@ -137,7 +140,12 @@ const CTAButton = forwardRef(({
                     />
                 </svg>
             )}
-            <span className="relative z-10">{children}</span>
+            <span className="relative z-10 flex items-center gap-2">
+                {children}
+                {showArrow && !loading && (
+                    <CircleArrowOutUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                )}
+            </span>
         </motion.button>
     );
 });

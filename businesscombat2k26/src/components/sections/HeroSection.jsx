@@ -144,7 +144,7 @@ const HeroSection = () => {
                         variant="primary"
                         size="large"
                         onClick={handleRegisterClick}
-                        glow={true}
+                        glow={"true"}
                         className="w-full sm:w-auto min-w-50"
                     >
                         Register for Business Combat
