@@ -21,7 +21,10 @@ const CoordinatorsSection = () => {
             { id: 3, name: 'Kiran Surya', role: 'Student Volunteer', phone: '+917981648321' },
             { id: 4, name: 'Mohammad Tahir', role: 'Student Volunteer', phone: '+917569993613' },
             { id: 5, name: 'Chindhu', role: 'Student Volunteer', phone: '+918555931854' },
-            { id: 6, name: 'Lahari', role: 'Student Volunteer', phone: '+918688883409' }
+            { id: 6, name: 'Lahari', role: 'Student Volunteer', phone: '+918688883409' },
+            {
+                id: 7, name: 'Vathsav PGS', role: 'Student Volunteer', phone: "+91 8121639392"
+            }
         ]
     };
 
